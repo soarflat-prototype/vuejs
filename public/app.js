@@ -61,3 +61,41 @@ new Vue({
     }
   }
 });
+
+// Storeパターン実装のTODOアプリケーション
+function ToDoStore() {}
+ToDoStore.prototype.constructor = function() {
+  this.state = {
+    todos: [{ text: 'Add some todos' }]
+  }
+};
+ToDoStore.prototype.addToDo = function(newToDo) {
+  var text = newToDo.trim();
+
+  if (text) {
+    this.state.todos.push({ text: text });
+  }
+};
+ToDoStore.prototype.removeToDo = function(index) {
+  this.state.todos.splice(index, 1);
+};
+
+var toDoStore = new ToDoStore();
+toDoStore.constructor();
+
+new Vue({
+  el: '#todo-with-store-pattern',
+  data: {
+    newTodo: '',
+    toDoStoreState: toDoStore.state
+  },
+  methods: {
+    addTodo: function() {
+      toDoStore.addToDo(this.newTodo);
+      this.newTodo = '';
+    },
+    removeTodo: function(index) {
+      toDoStore.removeToDo(index);
+    }
+  }
+});

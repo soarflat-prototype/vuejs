@@ -41,6 +41,17 @@
       </ul>
     </div>
 
+    <h1>Storeパターン実装のTODOアプリケーション</h1>
+    <div id="todo-with-store-pattern">
+      <input v-model="newTodo" v-on:keyup.enter="addTodo">
+      <ul>
+        <li v-for="todo in toDoStoreState.todos">
+          <span>{{ todo.text }}</span>
+           <button v-on:click="removeTodo($index)">X</button>
+        </li>
+      </ul>
+    </div>
+
     <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.min.js"></script>
     <script src="app.js"></script>
   </body>

@@ -36,4 +36,8 @@ block body
   h2 コンポーネント
   #app7
     ul
+      //v-bindはHTML属性をリアクティブに更新できる
+      //例えばimg(src="{{imageName}}")
+      //ではなく
+      //img(v-bind:src="imageName")が正しい
       todo-item(v-for="item in groceryList" v-bind:todo="item")

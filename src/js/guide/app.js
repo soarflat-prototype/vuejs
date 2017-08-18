@@ -90,4 +90,46 @@ const app6 = new Vue({
   },
 });
 
+/**
+ * コンポーネントを利用する
+ *
+ * Vue.component(tagName, options)でグローバルなコンポーネントを登録できる
+ * 例えば<todo-item></todo-item>というタグを登録したい場合は
+ * Vue.component('todo-item')と記述する
+ * オプションにはpropsとtemplateを指定している。
+ *
+ * propsは親コンポーネントからのデータを受け入れるために公開される属性のリストやハッシュのこと
+ * コンポーネントのインスタンスはスコープが分離しているため、テンプレート内の親データを直接参照することはできない
+ * propsを利用すると親データを子コンポーネントに渡すことができる
+ * propsはカスタム属性であり、渡したいデータ（属性）を明示的に指定する必要がある
+ * 今回propsにはtodoを指定しており、以下のように、todo-itemタグにtodoがあれば、それを参照できる
+ * <todo-item todo="{text: 'buy camera'}"></todo-item>
+ *
+ * そのため
+ * <li>{{ todo.text }}</li>は
+ * <li>buy camera</li>と出力される
+ */
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>id:{{ todo.id }} {{ todo.text }}</li>'
+});
+
+const app7 = new Vue({
+  el: '#app7',
+  data() {
+    return {
+      groceryList: [{
+        id: 0,
+        text: 'Vegetables',
+      }, {
+        id: 1,
+        text: 'meat',
+      }, {
+        id: 2,
+        text: 'drink',
+      }]
+    }
+  }
+});
+
 //----------------------------------------------------------------------------

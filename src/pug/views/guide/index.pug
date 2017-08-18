@@ -32,3 +32,8 @@ block body
   #app6
     p {{message}}
     input(v-model="message")
+
+  h2 コンポーネント
+  #app7
+    ul
+      todo-item(v-for="item in groceryList" v-bind:todo="item")

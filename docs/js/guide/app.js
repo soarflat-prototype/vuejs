@@ -79,56 +79,95 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //----------------------------------------------------------------------------
 
 /**
- * コンポーネント間のカスタムイベントの監視、発火などを管理するVueインスタンスを生成
- * 全てのコンポーネントがEventBus:updateStoreを発火、監視をする
- * コンポーネントがstoreを更新したらEventBus:updateStoreを発火
- * 監視している全てのコンポーネントがstoreの状態に応じた処理を実行する
+ * Hello Worldを表示する
  */
-var EventBus = new _vue2.default();
+var app = new _vue2.default({
+  el: '#app',
+  data: function data() {
+    return {
+      message: 'Hello World'
+    };
+  }
+});
 
 /**
- *
+ * データ属性にリアルタイムの時間を挿入する
  */
-// EventBus.$on('event', (data) => {
-//   console.log(data);
-//   sendUpdateStoreMessage();
-// });
+var app2 = new _vue2.default({
+  el: '#app2',
+  data: function data() {
+    return {
+      message: 'You loaded this page on ' + new Date()
+    };
+  }
+});
 
 /**
- * storeを更新したメッセージを送信する
+ * 条件分岐で要素を表示、非表示にする
  */
-// function sendUpdateStoreMessage() {
-//   // NOTE: debug
-//   console.log(store);
-//
-//   EventBus.$emit('EventBus:updateStore', store);
-// }
-
-//----------------------------------------------------------------------------
-
-/**
- * store、全てのデータはここで管理
- * storeを更新したらイベントを発火する
- */
-var store = {
-  data: {}
-};
-
-//----------------------------------------------------------------------------
-
-var sample = new _vue2.default({
-  el: '#sample',
+var app3 = new _vue2.default({
+  el: '#app3',
   methods: {
-    sample: function sample(e) {}
+    toggleSeen: function toggleSeen() {
+      this.$data.seen = !this.$data.seen;
+    }
   },
   data: function data() {
     return {
-      data: null
+      seen: true
+    };
+  }
+});
+
+/**
+ * ループでリストを表示
+ */
+var app4 = new _vue2.default({
+  el: '#app4',
+  data: function data() {
+    return {
+      todos: [{
+        text: 'todo1'
+      }, {
+        text: 'todo2'
+      }, {
+        text: 'todo3'
+      }]
+    };
+  }
+});
+
+/**
+ * ボタンをクリック時、文字を反転する
+ */
+var app5 = new _vue2.default({
+  el: '#app5',
+  data: function data() {
+    return {
+      message: 'message'
     };
   },
-  created: function created() {},
-  mounted: function mounted() {}
+
+  methods: {
+    reverseMessage: function reverseMessage() {
+      this.$data.message = this.$data.message.split('').reverse().join('');
+    }
+  }
 });
+
+/**
+ * 双方向バインディング、inputに入力した文字列が反映される
+ */
+var app6 = new _vue2.default({
+  el: '#app6',
+  data: function data() {
+    return {
+      message: 'Hello Vue!'
+    };
+  }
+});
+
+//----------------------------------------------------------------------------
 
 /***/ }),
 /* 1 */

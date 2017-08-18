@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>guide</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
+    <h1>はじめに</h1><a href="https://jp.vuejs.org/v2/guide/index.html" target="_blank">はじめに（Vue.js公式ドキュメント）</a>
+    <h2>Hello World</h2>
+    <div id="app">{{message}}</div>
+    <h2>データ属性にリアルタイムの時間を挿入する</h2>
+    <div id="app2"><span v-bind:title="message">テキストをマウスオーバーするとリアルタイムの時間が表示される</span></div>
+    <h2>条件分岐で要素を表示、非表示にする</h2>
+    <div id="app3">
+      <p v-if="seen">Now you see me</p>
+      <button v-on:click="toggleSeen">toggleSeen</button>
+    </div>
+    <h2>ループでリストを表示</h2>
+    <div id="app4">
+      <ul>
+        <li v-for="todo in todos">{{todo.text}}</li>
+      </ul>
+    </div>
+    <h2>ボタンをクリック時、文字を反転する</h2>
+    <div id="app5">
+      <p>{{message}}</p>
+      <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <h2>双方向バインディング</h2>
+    <div id="app6">
+      <p>{{message}}</p>
+      <input v-model="message">
+    </div>
     <script src="../js/guide/app.js"></script>
   </body>
 </html>

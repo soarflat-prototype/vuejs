@@ -3,3 +3,32 @@ block var
   - title = 'guide'
   - path = '../'
 block body
+  h1 はじめに
+  a(href="https://jp.vuejs.org/v2/guide/index.html", target="_blank") はじめに（Vue.js公式ドキュメント）
+
+  h2 Hello World
+  #app {{message}}
+
+  h2 データ属性にリアルタイムの時間を挿入する
+  #app2
+    span(v-bind:title="message") テキストをマウスオーバーするとリアルタイムの時間が表示される
+
+  h2 条件分岐で要素を表示、非表示にする
+  #app3
+    p(v-if="seen") Now you see me
+    button(v-on:click="toggleSeen") toggleSeen
+
+  h2 ループでリストを表示
+  #app4
+    ul
+      li(v-for="todo in todos") {{todo.text}}
+
+  h2 ボタンをクリック時、文字を反転する
+  #app5
+    p {{message}}
+    button(v-on:click="reverseMessage") Reverse Message
+
+  h2 双方向バインディング
+  #app6
+    p {{message}}
+    input(v-model="message")

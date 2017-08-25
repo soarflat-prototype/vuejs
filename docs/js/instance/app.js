@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -105,7 +105,8 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -120,136 +121,47 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //----------------------------------------------------------------------------
 
 /**
- * Hello Worldを表示する
+ * VueアプリケーションはVue コンストラクタ関数で
+ * root Vue instanceを作成することによって起動される
+ *
+ * Vueコンストラクタを拡張することで、あらかじめ定義されたオプションを伴う再利用可能な
+ * コンポーネントコンストラクタを生成できる
+ *
+ * 以下はMyComponentという拡張されたVueコンストラクタを定義している
  */
-var app = new _vue2.default({
+var MyComponent = _vue2.default.extend({
   el: '#app',
   data: function data() {
     return {
-      message: 'Hello World'
+      message: 'My Component Constructor'
     };
   }
 });
 
+var app = new MyComponent();
+
 /**
- * データ属性にリアルタイムの時間を挿入する
+ * Vueインスタンスは、自身のdataオブジェクトの全てのプロパティをプロキシする
+ * ようはリアクティブにしたいデータ（データ更新時、再描画するデータ）はdataオブジェクト内に指定する必要がある
  */
 var app2 = new _vue2.default({
   el: '#app2',
-  data: function data() {
-    return {
-      message: 'You loaded this page on ' + new Date()
-    };
+  data: { a: 1 },
+  created: function created() {
+    console.log('a is: ' + this.a);
   }
 });
 
 /**
- * 条件分岐で要素を表示、非表示にする
+ * app2.aの変更を監視し、変更されたらコールバックを実行
  */
-var app3 = new _vue2.default({
-  el: '#app3',
-  methods: {
-    toggleSeen: function toggleSeen() {
-      this.$data.seen = !this.$data.seen;
-    }
-  },
-  data: function data() {
-    return {
-      seen: true
-    };
-  }
+app2.$watch('a', function (newVal, oldVal) {
+  console.log('changed ' + oldVal + ' to ' + newVal);
 });
 
-/**
- * ループでリストを表示
- */
-var app4 = new _vue2.default({
-  el: '#app4',
-  data: function data() {
-    return {
-      todos: [{
-        text: 'todo1'
-      }, {
-        text: 'todo2'
-      }, {
-        text: 'todo3'
-      }]
-    };
-  }
-});
-
-/**
- * ボタンをクリック時、文字を反転する
- */
-var app5 = new _vue2.default({
-  el: '#app5',
-  data: function data() {
-    return {
-      message: 'message'
-    };
-  },
-
-  methods: {
-    reverseMessage: function reverseMessage() {
-      this.$data.message = this.$data.message.split('').reverse().join('');
-    }
-  }
-});
-
-/**
- * 双方向バインディング、inputに入力した文字列が反映される
- */
-var app6 = new _vue2.default({
-  el: '#app6',
-  data: function data() {
-    return {
-      message: 'Hello Vue!'
-    };
-  }
-});
-
-/**
- * コンポーネントを利用する
- *
- * Vue.component(tagName, options)でグローバルなコンポーネントを登録できる
- * 例えば<todo-item></todo-item>というタグを登録したい場合は
- * Vue.component('todo-item')と記述する
- * オプションにはpropsとtemplateを指定している。
- *
- * propsは親コンポーネントからのデータを受け入れるために公開される属性のリストやハッシュのこと
- * コンポーネントのインスタンスはスコープが分離しているため、テンプレート内の親データを直接参照することはできない
- * propsを利用すると親データを子コンポーネントに渡すことができる
- * propsはカスタム属性であり、渡したいデータ（属性）を明示的に指定する必要がある
- * 今回propsにはtodoを指定しており、以下のように、todo-itemタグにtodoがあれば
- * <todo-item todo="{text: 'buy camera'}"></todo-item>
- * それを参照してtemplateに利用できる
- *
- * そして、templateが以下のような指定になっていれば
- * template: '<li>{{ todo.text }}</li>'
- * todoを参照するため、<li>buy camera</li>が出力される
- */
-_vue2.default.component('todo-item', {
-  props: ['todo'],
-  template: '<li>id:{{ todo.id }} {{ todo.text }}</li>'
-});
-
-var app7 = new _vue2.default({
-  el: '#app7',
-  data: function data() {
-    return {
-      groceryList: [{
-        id: 0,
-        text: 'Vegetables'
-      }, {
-        id: 1,
-        text: 'meat'
-      }, {
-        id: 2,
-        text: 'drink'
-      }]
-    };
-  }
-});
+setTimeout(function () {
+  app2.a = '10';
+}, 1000);
 
 //----------------------------------------------------------------------------
 

@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   entry: {
     'guide/app': './src/js/guide/app',
+    'instance/app': './src/js/instance/app',
   },
 
   output: {

@@ -102,12 +102,13 @@ const app6 = new Vue({
  * コンポーネントのインスタンスはスコープが分離しているため、テンプレート内の親データを直接参照することはできない
  * propsを利用すると親データを子コンポーネントに渡すことができる
  * propsはカスタム属性であり、渡したいデータ（属性）を明示的に指定する必要がある
- * 今回propsにはtodoを指定しており、以下のように、todo-itemタグにtodoがあれば、それを参照できる
+ * 今回propsにはtodoを指定しており、以下のように、todo-itemタグにtodoがあれば
  * <todo-item todo="{text: 'buy camera'}"></todo-item>
+ * それを参照してtemplateに利用できる
  *
- * そのため
- * <li>{{ todo.text }}</li>は
- * <li>buy camera</li>と出力される
+ * そして、templateが以下のような指定になっていれば
+ * template: '<li>{{ todo.text }}</li>'
+ * todoを参照するため、<li>buy camera</li>が出力される
  */
 Vue.component('todo-item', {
   props: ['todo'],

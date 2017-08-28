@@ -1,0 +1,15 @@
+extends ../../include/_layout
+block var
+  - title = 'syntax'
+  - path = '../'
+block body
+  h1 テンプレート構文
+  a(href="https://jp.vuejs.org/v2/guide/syntax.html", target="_blank") テンプレート構文（Vue.js公式ドキュメント）
+
+  h2 テキスト
+  #app {{message}}
+
+  #app2(v-once) never change {{message}}
+
+  h2 raw HTML
+  #app3(v-html="rawHtml")

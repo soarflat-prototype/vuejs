@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>syntax</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <h1>テンプレート構文</h1><a href="https://jp.vuejs.org/v2/guide/syntax.html" target="_blank">テンプレート構文（Vue.js公式ドキュメント）</a>
+    <h2>テキスト</h2>
+    <div id="app">{{message}}</div>
+    <div id="app2" v-once>never change {{message}}</div>
+    <h2>raw HTML</h2>
+    <div id="app3" v-html="rawHtml"></div>
+    <script src="../js/syntax/app.js"></script>
+  </body>
+</html>

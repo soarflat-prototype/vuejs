@@ -13,3 +13,18 @@ block body
 
   h2 raw HTML
   #app3(v-html="rawHtml")
+
+  h2 属性
+  #app4(v-bind:id="dynamicId") DYNAMIC ID
+    button(v-bind:disabled="isButtonDisabled") button
+
+  h2 JavaScript式の使用
+  #app5
+    div(v-bind:id="'element' + id")
+      p {{'element ' + id}}
+      p {{ok ? 'YES' : 'NO'}}
+
+  h2 ディレクティブ
+  #app6
+    p(v-if="active") seen
+    button(v-on:click="doSomething") click!!

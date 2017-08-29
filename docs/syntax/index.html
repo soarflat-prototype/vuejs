@@ -13,6 +13,22 @@
     <div id="app2" v-once>never change {{message}}</div>
     <h2>raw HTML</h2>
     <div id="app3" v-html="rawHtml"></div>
+    <h2>属性</h2>
+    <div id="app4" v-bind:id="dynamicId">DYNAMIC ID
+      <button v-bind:disabled="isButtonDisabled">button</button>
+    </div>
+    <h2>JavaScript式の使用</h2>
+    <div id="app5">
+      <div v-bind:id="'element' + id">
+        <p>{{'element ' + id}}</p>
+        <p>{{ok ? 'YES' : 'NO'}}</p>
+      </div>
+    </div>
+    <h2>ディレクティブ</h2>
+    <div id="app6">
+      <p v-if="active">seen</p>
+      <button v-on:click="doSomething">click!!</button>
+    </div>
     <script src="../js/syntax/app.js"></script>
   </body>
 </html>

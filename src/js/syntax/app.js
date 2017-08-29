@@ -48,4 +48,64 @@ const app3 = new Vue({
   },
 });
 
+/**
+ * マウントするDOMが
+ * <div id="app4" v-bind:id="dynamicId">DYNAMIC ID</div>
+ * であり、v-bind:idを指定しているのでマウント時
+ * dynamicIdがDYNAMIC_IDに置き換わる属性の値は{{}}で指定することができないため
+ * v-bindを利用する
+ *
+ * 同じくマウントするDOMである
+ * <button v-bind:disabled="isButtonDisabled">button</button>
+ * isButtonDisabledはtrueの場合disabledが付与され、
+ * falseの場合はdisabledがなくなる
+ */
+const app4 = new Vue({
+  el: '#app4',
+  data() {
+    return {
+      dynamicId: 'DYNAMIC_ID',
+      isButtonDisabled: true,
+    }
+  },
+});
+
+/**
+ * {{}}やv-bind内などではJavaScript式が利用できる
+ * {{'element ' + id}}
+ * {{ok ? 'YES' : 'NO'}}
+ * v-bind:id="'element' + id"
+ */
+const app5 = new Vue({
+  el: '#app5',
+  data() {
+    return {
+      id: 'DMM',
+      ok: false,
+    }
+  },
+});
+
+/**
+ * ディレクティブ
+ * このディレクティブは、それ自身をVueインスタンスのプロパティや
+ * インスタンスの文脈の中で評価される表現にバインドできる。
+ * 配下のプロパティや表現の値が変更されたら、それらのディレクティブのupdate()関数が同期的に呼ばれる。
+ * <div v-if="active">seen</div>
+ * の場合activeがtrueの場合、要素が表意され、falseの場合、非表示なる。
+ */
+const app6 = new Vue({
+  el: '#app6',
+  data() {
+    return {
+      active: true,
+    }
+  },
+  methods: {
+    doSomething() {
+      console.log('doSomething');
+    }
+  }
+});
+
 //----------------------------------------------------------------------------

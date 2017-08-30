@@ -4,6 +4,8 @@ import Router from 'vue-router';
 // プラグインをインストール
 Vue.use(Router);
 
+//----------------------------------------------------------------------------
+
 // ルートを定義する
 const Foo = { template: '<div>foo</div>' };
 const Bar = { template: '<div>bar</div>' };
@@ -27,3 +29,24 @@ const router = new Router({
 const app = new Vue({
   router
 }).$mount('#app');
+
+//----------------------------------------------------------------------------
+
+const User = {
+  template: '<div>{{ $route.params.id }}</div>'
+};
+
+const userRouter = new Router({
+  routes: [
+    {
+      // コロン（:）を指定することによって
+      // /user/foo や /user/barなど、同じルートにマッチする
+      path: '/user/:id',
+      component: User,
+    }
+  ],
+});
+
+const app2 = new Vue({
+  router: userRouter
+}).$mount('#app2');

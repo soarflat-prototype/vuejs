@@ -125,6 +125,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // プラグインをインストール
 _vue2.default.use(_vueRouter2.default);
 
+//----------------------------------------------------------------------------
+
 // ルートを定義する
 var Foo = { template: '<div>foo</div>' };
 var Bar = { template: '<div>bar</div>' };
@@ -146,6 +148,25 @@ var router = new _vueRouter2.default({
 var app = new _vue2.default({
   router: router
 }).$mount('#app');
+
+//----------------------------------------------------------------------------
+
+var User = {
+  template: '<div>{{ $route.params.id }}</div>'
+};
+
+var userRouter = new _vueRouter2.default({
+  routes: [{
+    // コロン（:）を指定することによって
+    // /user/foo や /user/barなど、同じルートにマッチする
+    path: '/user/:id',
+    component: User
+  }]
+});
+
+var app2 = new _vue2.default({
+  router: userRouter
+}).$mount('#app2');
 
 /***/ }),
 /* 6 */

@@ -22,6 +22,15 @@
       <!--ルートとマッチしたコンポーネントがここに表示される-->
       <router-view></router-view>
     </div>
+    <div id="app2">
+      <h1>Dynamic Matching</h1>
+      <p>
+        <router-link to="/user/foo">/user/foo</router-link>
+        <router-link to="/user/bar">/user/bar</router-link>
+      </p>
+      <!--ルートとマッチしたコンポーネントがここに表示される-->
+      <router-view></router-view>
+    </div>
     <script src="../js/router/app.js"></script>
   </body>
 </html>

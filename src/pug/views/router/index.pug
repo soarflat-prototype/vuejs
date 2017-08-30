@@ -17,3 +17,13 @@ block body
 
     //ルートとマッチしたコンポーネントがここに表示される
     router-view
+
+  #app2
+    h1 Dynamic Matching
+
+    p
+      router-link(to="/user/foo") /user/foo
+      router-link(to="/user/bar") /user/bar
+
+    //ルートとマッチしたコンポーネントがここに表示される
+    router-view

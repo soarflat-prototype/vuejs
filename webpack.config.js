@@ -6,6 +6,7 @@ module.exports = {
     'instance/app': './src/js/instance/app',
     'syntax/app': './src/js/syntax/app',
     'router/app': './src/js/router/app',
+    'component/app': './src/js/component/app',
   },
 
   output: {

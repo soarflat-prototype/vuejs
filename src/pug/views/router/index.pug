@@ -1,0 +1,19 @@
+extends ../../include/_layout
+block var
+  - title = 'router'
+  - path = '../'
+block body
+  style(type="text/css").
+    .router-link-active {
+      color: red;
+    }
+
+  #app
+    h1 Vue Router Sample
+
+    p
+      router-link(to="/foo") Go to Foo
+      router-link(to="/bar") Go to Bar
+
+    //ルートとマッチしたコンポーネントがここに表示される
+    router-view

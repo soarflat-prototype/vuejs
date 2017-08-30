@@ -23,14 +23,15 @@
     "build:js": "webpack",
     "build": "npm-run-all build:*",
     "watch:html": "pug src/pug/views -o docs -P -w",
-    "watch:css": "yarn run build:css -- --watch",
+    "watch:css": "npm run build:css -- --watch",
     "watch:js": "webpack --watch",
     "watch": "npm-run-all --parallel watch:*",
-    "minify": "NODE_ENV=production yarn run webpack -- --optimize-minimize",
+    "minify": "NODE_ENV=production npm run webpack -- --optimize-minimize",
     "webpack": "webpack --colors --display-error-details --progress"
   },
   "dependencies": {
     "reset-css": "^2.2.0",
-    "vue": "^2.3.4"
+    "vue": "^2.3.4",
+    "vue-router": "^2.7.0"
   }
 }

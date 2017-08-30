@@ -5,6 +5,7 @@ module.exports = {
     'guide/app': './src/js/guide/app',
     'instance/app': './src/js/instance/app',
     'syntax/app': './src/js/syntax/app',
+    'router/app': './src/js/router/app',
   },
 
   output: {

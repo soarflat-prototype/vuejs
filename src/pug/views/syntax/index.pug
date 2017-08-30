@@ -28,3 +28,9 @@ block body
   #app6
     p(v-if="active") seen
     button(v-on:click="doSomething") click!!
+
+  h2 フィルタ
+  #app7
+    p {{message | capitalize}}
+    p {{message | reverse}}
+

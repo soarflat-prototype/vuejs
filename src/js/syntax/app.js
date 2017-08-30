@@ -108,4 +108,40 @@ const app6 = new Vue({
   }
 });
 
+/**
+ * フィルタ
+ * Vue.jsのフィルタは「値を取り、加工し、加工した値を返す」関数のことを指す
+ * ファイルを利用するには、パイプ(|)を利用して以下のように記述をする
+ * <span>{{message | capitalize}}</span>
+ *
+ * messageを引数としてフィルタであるcapitalizeを実行する
+ *
+ * 以下のようにディレクティブの値にも記述できる
+ * <span v-text="message | capitalize"></span>
+ */
+
+/**
+ * グローバルフィルタにreverseを登録する
+ * グローバルフィルタに登録すればどのコンポーネントでもreverseを利用できる
+ */
+Vue.filter('reverse', function (value) {
+  return value.split('').reverse().join('');
+});
+
+const app7 = new Vue({
+  el: '#app7',
+  data() {
+    return {
+      message: 'hello world',
+    }
+  },
+  filters: {
+    capitalize(value) {
+      if (!value) return '';
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  }
+});
+
 //----------------------------------------------------------------------------

@@ -29,6 +29,11 @@
       <p v-if="active">seen</p>
       <button v-on:click="doSomething">click!!</button>
     </div>
+    <h2>フィルタ</h2>
+    <div id="app7">
+      <p>{{message | capitalize}}</p>
+      <p>{{message | reverse}}</p>
+    </div>
     <script src="../js/syntax/app.js"></script>
   </body>
 </html>

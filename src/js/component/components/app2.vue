@@ -1,19 +1,19 @@
-<template>
-  <div class="example2">{{ message }}</div>
+<template lang="pug">
+  .example {{message}}
 </template>
 
 <script>
   export default {
     data() {
       return {
-        message: 'Hello world'
+        message: 'Hello DMM'
       }
     }
   }
 </script>
 
-<style>
-  .example2 {
+<style scoped>
+  .example {
     color: blue;
   }
 </style>

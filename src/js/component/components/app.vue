@@ -1,5 +1,5 @@
-<template>
-  <div class="example">{{ message }}</div>
+<template lang="pug">
+  .example {{message}}
 </template>
 
 <script>
@@ -12,7 +12,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .example {
     color: red;
   }

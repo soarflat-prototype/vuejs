@@ -10,10 +10,13 @@
     "babel-preset-env": "^1.5.1",
     "babel-register": "^6.24.1",
     "browser-sync": "^2.18.12",
+    "css-loader": "^0.28.7",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
     "pug": "^2.0.0-rc.2",
     "pug-cli": "^1.0.0-alpha6",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.2",
     "webpack": "^3.0.0"
   },
   "scripts": {

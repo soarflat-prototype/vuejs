@@ -1,0 +1,23 @@
+extends ../../include/_layout
+block var
+  - title = 'transition'
+  - path = '../'
+block body
+  h1 トランジション
+  a(href="https://jp.vuejs.org/v2/guide/transitions.html", target="_blank") Enter/Leave とトランジション一覧（Vue.js公式ドキュメント）
+
+  h2 単一要素/コンポーネントのトランジション
+  #app
+    .demo
+      button(v-on:click="show = !show") Toggle
+      transition(name="fade")
+        p(v-if="show") hello
+
+  style(type='text/css').
+    .fade-enter-active, .fade-leave-active{
+      transition: opacity .5s
+    }
+
+    .fade-enter, .fade-leave-to{
+      opacity: 0
+    }

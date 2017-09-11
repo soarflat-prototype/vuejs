@@ -8,6 +8,7 @@ module.exports = {
     'router/app': './src/js/router/app',
     'component/app': './src/js/component/app',
     'computed/app': './src/js/computed/app',
+    'transition/app': './src/js/transition/app',
   },
 
   output: {

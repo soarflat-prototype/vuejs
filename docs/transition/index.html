@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>transition</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <h1>トランジション</h1><a href="https://jp.vuejs.org/v2/guide/transitions.html" target="_blank">Enter/Leave とトランジション一覧（Vue.js公式ドキュメント）</a>
+    <h2>単一要素/コンポーネントのトランジション</h2>
+    <div id="app">
+      <div class="demo">
+        <button v-on:click="show = !show">Toggle</button>
+        <transition name="fade">
+          <p v-if="show">hello</p>
+        </transition>
+      </div>
+    </div>
+    <style type="text/css">
+      .fade-enter-active, .fade-leave-active{
+        transition: opacity .5s
+      }
+      
+      .fade-enter, .fade-leave-to{
+        opacity: 0
+      }
+    </style>
+    <script src="../js/transition/app.js"></script>
+  </body>
+</html>

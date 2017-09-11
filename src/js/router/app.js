@@ -8,8 +8,8 @@ Vue.use(Router);
 //----------------------------------------------------------------------------
 
 // ルートを定義する
-const Foo = {template: '<div>foo</div>'};
-const Bar = {template: '<div>bar</div>'};
+const Foo = { template: '<div>foo</div>' };
+const Bar = { template: '<div>bar</div>' };
 
 // ルーターインスタンスを作成し、ルートのオプションを渡す
 const routes = [{
@@ -54,6 +54,9 @@ const appRouter = new Router({
   routes: [{
     path: '/app/:id',
     component: appComponent,
+  }, {
+    path: '*',
+    redirect: '/app/doraemon',
   }],
 });
 

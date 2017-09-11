@@ -60,11 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -76,7 +77,8 @@
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports) {
 
 var g;
@@ -103,11 +105,8 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -122,138 +121,70 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //----------------------------------------------------------------------------
 
 /**
- * Hello Worldを表示する
+ * 算出プロパティを利用して文字を反転して表示
  */
 var app = new _vue2.default({
   el: '#app',
+
   data: function data() {
     return {
       message: 'Hello World'
     };
+  },
+
+
+  // computed内にgetter関数を指定できる
+  // methodsに同じような定義をすることで同様の結果になる
+  // 算出プロパティ（computed）は依存関係にもとづきキャッシュされる
+  // 今回の場合messageが更新されない限り、以前計算された結果を即時に返す
+  // 計算に無茶苦茶コストがかかる場合、キャッシングを利用するために算出プロパティを利用する
+  // 逆にキャッシュを利用しない（再描画が起こる度に関数を実行したい）場合methodsを利用する
+  computed: {
+    reverseMessage: function reverseMessage() {
+      return this.message.split('').reverse().join('');
+    }
+  },
+
+  // 上記のcomputedと同じ結果、キャッシングするかしないかの違いがある
+  methods: {
+    reverseMessage2: function reverseMessage2() {
+      return this.message.split('').reverse().join('');
+    }
   }
 });
 
 /**
- * データ属性にリアルタイムの時間を挿入する
+ * watchとcomputedを利用して、フルネームを描画する
+ * どちらも同じ結果になるが、computedの方が簡潔に書ける
  */
 var app2 = new _vue2.default({
   el: '#app2',
-  data: function data() {
-    return {
-      message: 'You loaded this page on ' + new Date()
-    };
-  }
-});
 
-/**
- * 条件分岐で要素を表示、非表示にする
- */
-var app3 = new _vue2.default({
-  el: '#app3',
-  methods: {
-    toggleSeen: function toggleSeen() {
-      this.$data.seen = !this.$data.seen;
-    }
-  },
   data: function data() {
     return {
-      seen: true
-    };
-  }
-});
-
-/**
- * ループでリストを表示
- */
-var app4 = new _vue2.default({
-  el: '#app4',
-  data: function data() {
-    return {
-      todos: [{
-        text: 'todo1'
-      }, {
-        text: 'todo2'
-      }, {
-        text: 'todo3'
-      }]
-    };
-  }
-});
-
-/**
- * ボタンをクリック時、文字を反転する
- */
-var app5 = new _vue2.default({
-  el: '#app5',
-  data: function data() {
-    return {
-      message: 'message'
+      firstName: 'DOM',
+      lastName: 'BAR',
+      fullName: 'DOM BAR'
     };
   },
 
-  methods: {
-    reverseMessage: function reverseMessage() {
-      this.$data.message = this.$data.message.split('').reverse().join('');
+
+  watch: {
+    firstName: function firstName(val) {
+      this.fullName = val + ' ' + this.lastName;
+    },
+    lastName: function lastName(val) {
+      this.fullName = this.firstName + ' ' + val;
+    }
+  },
+
+  computed: {
+    fullName2: function fullName2() {
+      return this.firstName + ' ' + this.lastName;
     }
   }
 });
-
-/**
- * 双方向バインディング、inputに入力した文字列が反映される
- */
-var app6 = new _vue2.default({
-  el: '#app6',
-  data: function data() {
-    return {
-      message: 'Hello Vue!'
-    };
-  }
-});
-
-/**
- * コンポーネントを利用する
- *
- * Vue.component(tagName, options)でグローバルなコンポーネントを登録できる
- * 例えば<todo-item></todo-item>というタグを登録したい場合は
- * Vue.component('todo-item')と記述する
- * オプションにはpropsとtemplateを指定している。
- *
- * propsは親コンポーネントからのデータを受け入れるために公開される属性のリストやハッシュのこと
- * コンポーネントのインスタンスはスコープが分離しているため、テンプレート内の親データを直接参照することはできない
- * propsを利用すると親データを子コンポーネントに渡すことができる
- * propsはカスタム属性であり、渡したいデータ（属性）を明示的に指定する必要がある
- * 今回propsにはtodoを指定しており、以下のように、todo-itemタグにtodoがあれば
- * <todo-item todo="{text: 'buy camera'}"></todo-item>
- * それを参照してtemplateに利用できる
- *
- * そして、templateが以下のような指定になっていれば
- * template: '<li>{{ todo.text }}</li>'
- * todoを参照するため、<li>buy camera</li>が出力される
- */
-_vue2.default.component('todo-item', {
-  props: ['todo'],
-  template: '<li>id:{{ todo.id }} {{ todo.text }}</li>'
-});
-
-var app7 = new _vue2.default({
-  el: '#app7',
-  data: function data() {
-    return {
-      groceryList: [{
-        id: 0,
-        text: 'Vegetables'
-      }, {
-        id: 1,
-        text: 'meat'
-      }, {
-        id: 2,
-        text: 'drink'
-      }]
-    };
-  }
-});
-
-//----------------------------------------------------------------------------
 
 /***/ })
-/******/ ]);
+
+/******/ });

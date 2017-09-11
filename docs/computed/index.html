@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>computed</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <h1>算出プロパティとウォッチャ</h1><a href="https://jp.vuejs.org/v2/guide/computed.html" target="_blank">算出プロパティとウォッチャ（Vue.js公式ドキュメント）</a>
+    <h2>算出プロパティ</h2>
+    <div id="app">
+      <p>{{ message }}</p>
+      <p>{{ reverseMessage }}</p>
+      <p>{{ reverseMessage2() }}</p>
+    </div>
+    <h2>算出プロパティ vs 監視プロパティ</h2>
+    <div id="app2">
+      <p>{{ fullName }}</p>
+      <p>{{ fullName2 }}</p>
+    </div>
+    <!--h2 データ属性にリアルタイムの時間を挿入する-->
+    <!--#app2-->
+    <!--  span(v-bind:title="message") テキストをマウスオーバーするとリアルタイムの時間が表示される-->
+    <!---->
+    <!--h2 条件分岐で要素を表示、非表示にする-->
+    <!--#app3-->
+    <!--  p(v-if="seen") Now you see me-->
+    <!--  button(v-on:click="toggleSeen") toggleSeen-->
+    <!---->
+    <!--h2 ループでリストを表示-->
+    <!--#app4-->
+    <!--  ul-->
+    <!--    li(v-for="todo in todos") {{todo.text}}-->
+    <!---->
+    <!--h2 ボタンをクリック時、文字を反転する-->
+    <!--#app5-->
+    <!--  p {{message}}-->
+    <!--  button(v-on:click="reverseMessage") Reverse Message-->
+    <!---->
+    <!--h2 双方向バインディング-->
+    <!--#app6-->
+    <!--  p {{message}}-->
+    <!--  input(v-model="message")-->
+    <!---->
+    <!--h2 コンポーネント-->
+    <!--#app7-->
+    <!--  ul-->
+    <!--    //v-bindはHTML属性をリアクティブに更新できる-->
+    <!--    //例えばimg(src="{{imageName}}")-->
+    <!--    //ではなく-->
+    <!--    //img(v-bind:src="imageName")が正しい-->
+    <!--    todo-item(v-for="item in groceryList" v-bind:todo="item")-->
+    <script src="../js/computed/app.js"></script>
+  </body>
+</html>

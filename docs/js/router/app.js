@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -103,91 +103,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _vue = __webpack_require__(0);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-var _vueRouter = __webpack_require__(11);
-
-var _vueRouter2 = _interopRequireDefault(_vueRouter);
-
-var _app = __webpack_require__(13);
-
-var _app2 = _interopRequireDefault(_app);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// プラグインをインストール
-_vue2.default.use(_vueRouter2.default);
-
-//----------------------------------------------------------------------------
-
-// ルートを定義する
-var Foo = { template: '<div>foo</div>' };
-var Bar = { template: '<div>bar</div>' };
-
-// ルーターインスタンスを作成し、ルートのオプションを渡す
-var routes = [{
-  path: '/foo',
-  component: Foo
-}, {
-  path: '/bar',
-  component: Bar
-}];
-
-// ルートとなるインスタンスを作成し、マウントする
-var router = new _vueRouter2.default({
-  routes: routes
-});
-
-var app = new _vue2.default({
-  router: router
-}).$mount('#app');
-
-//----------------------------------------------------------------------------
-
-var User = {
-  template: '<div>{{ $route.params.id }}</div>'
-};
-
-var userRouter = new _vueRouter2.default({
-  routes: [{
-    // コロン（:）を指定することによって
-    // /user/foo や /user/barなど、同じルートにマッチする
-    path: '/user/:id',
-    component: User
-  }]
-});
-
-var app2 = new _vue2.default({
-  router: userRouter
-}).$mount('#app2');
-
-//----------------------------------------------------------------------------
-
-var appRouter = new _vueRouter2.default({
-  routes: [{
-    path: '/app/:id',
-    component: _app2.default
-  }]
-});
-
-var app3 = new _vue2.default({
-  router: appRouter
-}).$mount('#app3');
-
-/***/ }),
-/* 6 */,
-/* 7 */
+/* 2 */
 /***/ (function(module, exports) {
 
 /*
@@ -269,7 +185,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 8 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -288,7 +204,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(10)
+var listToStyles = __webpack_require__(5)
 
 /*
 type StyleObject = {
@@ -490,7 +406,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 9 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -587,7 +503,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 10 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /**
@@ -620,7 +536,90 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 11 */
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _vue = __webpack_require__(0);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vueRouter = __webpack_require__(10);
+
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
+
+var _app = __webpack_require__(12);
+
+var _app2 = _interopRequireDefault(_app);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// プラグインをインストール
+_vue2.default.use(_vueRouter2.default);
+
+//----------------------------------------------------------------------------
+
+// ルートを定義する
+var Foo = { template: '<div>foo</div>' };
+var Bar = { template: '<div>bar</div>' };
+
+// ルーターインスタンスを作成し、ルートのオプションを渡す
+var routes = [{
+  path: '/foo',
+  component: Foo
+}, {
+  path: '/bar',
+  component: Bar
+}];
+
+// ルートとなるインスタンスを作成し、マウントする
+var router = new _vueRouter2.default({
+  routes: routes
+});
+
+var app = new _vue2.default({
+  router: router
+}).$mount('#app');
+
+//----------------------------------------------------------------------------
+
+var User = {
+  template: '<div>{{ $route.params.id }}</div>'
+};
+
+var userRouter = new _vueRouter2.default({
+  routes: [{
+    // コロン（:）を指定することによって
+    // /user/foo や /user/barなど、同じルートにマッチする
+    path: '/user/:id',
+    component: User
+  }]
+});
+
+var app2 = new _vue2.default({
+  router: userRouter
+}).$mount('#app2');
+
+//----------------------------------------------------------------------------
+
+var appRouter = new _vueRouter2.default({
+  routes: [{
+    path: '/app/:id',
+    component: _app2.default
+  }]
+});
+
+var app3 = new _vue2.default({
+  router: appRouter
+}).$mount('#app3');
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3131,10 +3130,10 @@ if (inBrowser && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["default"] = (VueRouter);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(11)))
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -3324,19 +3323,19 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_app_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_506da201_hasScoped_true_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_app_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_app_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_506da201_hasScoped_true_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_app_vue__ = __webpack_require__(16);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(14)
+  __webpack_require__(13)
 }
-var normalizeComponent = __webpack_require__(9)
+var normalizeComponent = __webpack_require__(4)
 /* script */
 
 /* template */
@@ -3378,17 +3377,17 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(15);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(8)("15586492", content, false);
+var update = __webpack_require__(3)("15586492", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -3404,10 +3403,10 @@ if(false) {
 }
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(undefined);
+exports = module.exports = __webpack_require__(2)(undefined);
 // imports
 
 
@@ -3418,7 +3417,7 @@ exports.push([module.i, "\n.example[data-v-506da201] {\n  color: red;\n}\n", ""]
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3440,7 +3439,7 @@ exports.push([module.i, "\n.example[data-v-506da201] {\n  color: red;\n}\n", ""]
 });
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

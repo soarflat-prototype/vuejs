@@ -55,6 +55,9 @@ const appRouter = new Router({
     path: '/app/:id',
     component: appComponent,
   }, {
+    path: '/user/:id',
+    component: User,
+  }, {
     path: '*',
     redirect: '/app/doraemon',
   }],

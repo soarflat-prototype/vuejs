@@ -53,10 +53,14 @@ const app2 = new Vue({
 const appRouter = new Router({
   routes: [{
     path: '/app/:id',
-    component: appComponent,
+    components: {
+      a: appComponent,
+    },
   }, {
     path: '/user/:id',
-    component: User,
+    components: {
+      b: appComponent,
+    },
   }, {
     path: '*',
     redirect: '/app/doraemon',

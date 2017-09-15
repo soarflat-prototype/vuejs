@@ -610,10 +610,14 @@ var app2 = new _vue2.default({
 var appRouter = new _vueRouter2.default({
   routes: [{
     path: '/app/:id',
-    component: _app2.default
+    components: {
+      a: _app2.default
+    }
   }, {
     path: '/user/:id',
-    component: User
+    components: {
+      b: _app2.default
+    }
   }, {
     path: '*',
     redirect: '/app/doraemon'

@@ -21,6 +21,7 @@
     "webpack": "^3.0.0"
   },
   "scripts": {
+    "start": "npm run server",
     "server": "browser-sync start --server 'docs'",
     "build:html": "pug src/pug/views -o docs -P",
     "build:css": "node-sass --output-style compressed -o docs/css src/scss",

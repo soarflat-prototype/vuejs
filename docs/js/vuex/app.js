@@ -179,6 +179,43 @@ var ui = new _vue2.default({
   }
 });
 
+var store2 = new _vuex2.default.Store({
+  state: {
+    todos: [{
+      id: 1,
+      text: '...',
+      done: true
+    }, {
+      id: 2,
+      text: '...',
+      done: false
+    }]
+  },
+  getters: {
+    doneTodos: function doneTodos(state) {
+      return state.todos.filter(function (todo) {
+        return todo.done;
+      });
+    },
+    doneTodosCount: function doneTodosCount(state, getters) {
+      return getters.doneTodos.length;
+    }
+  }
+});
+
+var todo = new _vue2.default({
+  el: '#todo',
+  store: store2,
+  computed: {
+    todos: function todos() {
+      return this.$store.state.todos;
+    },
+    doneTodosCount: function doneTodosCount() {
+      return this.$store.getters.doneTodosCount;
+    }
+  }
+});
+
 /***/ }),
 
 /***/ 31:

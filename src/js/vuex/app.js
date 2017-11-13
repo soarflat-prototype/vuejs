@@ -57,3 +57,40 @@ const ui = new Vue({
     }
   }
 });
+
+const store2 = new Vuex.Store({
+  state: {
+    todos: [
+      {
+        id: 1,
+        text: '...',
+        done: true
+      }, {
+        id: 2,
+        text: '...',
+        done: false
+      }
+    ]
+  },
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done)
+    },
+    doneTodosCount: (state, getters) => {
+      return getters.doneTodos.length;
+    }
+  }
+});
+
+const todo = new Vue({
+  el: '#todo',
+  store: store2,
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    },
+    doneTodosCount() {
+      return this.$store.getters.doneTodosCount;
+    }
+  }
+});

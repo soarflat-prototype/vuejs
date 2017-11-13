@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Vuex</h1><a href="https://vuex.vuejs.org/ja/getting-started.html" target="_blank">Vuex 入門</a>
-    <h2></h2>
+    <h2>カウンター</h2>
     <div id="counter">
       <p>カウンター</p><counter></counter>
     </div>
@@ -20,6 +20,16 @@
       <button @click="increment">+</button>
       <button @click="decrement">-</button>
     </div>
+    <h2>TODO</h2>
+    <div id="todo">
+      <!--ul-->
+      <!--  li(v-for="todo in todos") {{ todo.text }}-->
+      <div>
+        <p>完了TODO数</p>
+        <p>{{ doneTodosCount }}</p>
+      </div>
+    </div>
+    <div id="todo2"></div>
     <script src="../js/vuex/app.js"></script>
   </body>
 </html>

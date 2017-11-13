@@ -6,7 +6,7 @@ block body
   h1 Vuex
   a(href="https://vuex.vuejs.org/ja/getting-started.html", target="_blank") Vuex 入門
 
-  h2
+  h2 カウンター
   #counter
     p カウンター
     <counter></counter>
@@ -16,3 +16,12 @@ block body
   #ui
     button(@click="increment") +
     button(@click="decrement") -
+
+  h2 TODO
+  #todo
+    //ul
+    //  li(v-for="todo in todos") {{ todo.text }}
+    div
+      p 完了TODO数
+      p {{ doneTodosCount }}
+  #todo2

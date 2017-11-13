@@ -139,7 +139,7 @@ var store = new _vuex2.default.Store({
 });
 
 var Counter = {
-  template: '<div>{{ count }}</div>',
+  template: '<p>{{ count }}</p>',
   computed: {
     count: function count() {
       return this.$store.state.count;
@@ -153,8 +153,7 @@ var counter = new _vue2.default({
   // そのため、this.$storeで各コンポーネントから参照することができる
   // 今回の場合、Counterコンポーネントからストアを参照できる
   store: store,
-  components: { Counter: Counter },
-  template: '\n    <div class="counter">\n      <counter></counter>\n    </div>\n  '
+  components: { Counter: Counter }
 });
 
 var power = new _vue2.default({

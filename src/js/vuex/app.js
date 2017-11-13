@@ -18,7 +18,7 @@ const store = new Vuex.Store({
 });
 
 const Counter = {
-  template: `<div>{{ count }}</div>`,
+  template: `<p>{{ count }}</p>`,
   computed: {
     count() {
       return this.$store.state.count
@@ -33,11 +33,6 @@ const counter = new Vue({
   // 今回の場合、Counterコンポーネントからストアを参照できる
   store,
   components: { Counter },
-  template: `
-    <div class="counter">
-      <counter></counter>
-    </div>
-  `,
 });
 
 const power = new Vue({

@@ -131,14 +131,12 @@ var store = new _vuex2.default.Store({
   mutations: {
     increment: function increment(state) {
       state.count++;
+    },
+    decrement: function decrement(state) {
+      state.count--;
     }
   }
 });
-
-store.commit('increment');
-store.commit('increment');
-
-console.log(store.state.count); // -> 1
 
 var Counter = {
   template: '<div>{{ count }}</div>',
@@ -149,14 +147,37 @@ var Counter = {
   }
 };
 
-var app = new _vue2.default({
-  el: '#app',
+var counter = new _vue2.default({
+  el: '#counter',
   // ルートインスタンスにstoreオプションを渡すことで、渡されたストアをルートの全ての子コンポーネントに注入する
   // そのため、this.$storeで各コンポーネントから参照することができる
   // 今回の場合、Counterコンポーネントからストアを参照できる
   store: store,
   components: { Counter: Counter },
-  template: '\n    <div class="app">\n      <counter></counter>\n    </div>\n  '
+  template: '\n    <div class="counter">\n      <counter></counter>\n    </div>\n  '
+});
+
+var power = new _vue2.default({
+  el: '#power',
+  store: store,
+  computed: {
+    power: function power() {
+      return Math.pow(this.$store.state.count, 2);
+    }
+  }
+});
+
+var ui = new _vue2.default({
+  el: '#ui',
+  store: store,
+  methods: {
+    increment: function increment() {
+      store.commit('increment');
+    },
+    decrement: function decrement() {
+      store.commit('decrement');
+    }
+  }
 });
 
 /***/ }),

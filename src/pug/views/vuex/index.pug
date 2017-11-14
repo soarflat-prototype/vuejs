@@ -16,11 +16,13 @@ block body
   #ui
     button(@click="increment") +
     button(@click="decrement") -
+    button(@click="incrementWithAction") + (incrementWithAction)
+    button(@click="incrementAsync") + (incrementAsync)
 
   h2 TODO
   #todo
-    //ul
-    //  li(v-for="todo in todos") {{ todo.text }}
+    ul
+      li(v-for="todo in todos") {{ todo.text }}
     div
       p 完了TODO数
       p {{ doneTodosCount }}

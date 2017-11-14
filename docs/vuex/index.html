@@ -19,11 +19,14 @@
     <div id="ui">
       <button @click="increment">+</button>
       <button @click="decrement">-</button>
+      <button @click="incrementWithAction">+ (incrementWithAction)</button>
+      <button @click="incrementAsync">+ (incrementAsync)</button>
     </div>
     <h2>TODO</h2>
     <div id="todo">
-      <!--ul-->
-      <!--  li(v-for="todo in todos") {{ todo.text }}-->
+      <ul>
+        <li v-for="todo in todos">{{ todo.text }}</li>
+      </ul>
       <div>
         <p>完了TODO数</p>
         <p>{{ doneTodosCount }}</p>

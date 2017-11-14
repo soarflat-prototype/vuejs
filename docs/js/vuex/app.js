@@ -135,6 +135,28 @@ var store = new _vuex2.default.Store({
     decrement: function decrement(state) {
       state.count--;
     }
+  },
+  // アクションを登録する
+  // アクションは状態を変更するのではなく、ミューテーションをコミットする
+  // アクションは任意の非同期処理を含むことができる
+  actions: {
+    increment: function increment(context) {
+      // context.commitを呼び出すことでミューテーションをコミットできる
+      // context.stateやcontext.gettersで、状態やゲッターにもアクセスできる
+      context.commit('increment');
+    },
+
+    // 上記はES2015のargument destructuringを利用して以下のようにも記述できる
+    // increment({ commit }) {
+    //   commit('increment');
+    // }
+    incrementAsync: function incrementAsync(_ref) {
+      var commit = _ref.commit;
+
+      setTimeout(function () {
+        commit('increment');
+      }, 1000);
+    }
   }
 });
 
@@ -175,6 +197,12 @@ var ui = new _vue2.default({
     },
     decrement: function decrement() {
       store.commit('decrement');
+    },
+    incrementWithAction: function incrementWithAction() {
+      store.dispatch('increment');
+    },
+    incrementAsync: function incrementAsync() {
+      store.dispatch('incrementAsync');
     }
   }
 });

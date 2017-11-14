@@ -14,6 +14,25 @@ const store = new Vuex.Store({
     decrement(state) {
       state.count--;
     }
+  },
+  // アクションを登録する
+  // アクションは状態を変更するのではなく、ミューテーションをコミットする
+  // アクションは任意の非同期処理を含むことができる
+  actions: {
+    increment(context) {
+      // context.commitを呼び出すことでミューテーションをコミットできる
+      // context.stateやcontext.gettersで、状態やゲッターにもアクセスできる
+      context.commit('increment');
+    },
+    // 上記はES2015のargument destructuringを利用して以下のようにも記述できる
+    // increment({ commit }) {
+    //   commit('increment');
+    // }
+    incrementAsync({ commit }) {
+      setTimeout(() => {
+        commit('increment')
+      }, 1000);
+    }
   }
 });
 
@@ -54,6 +73,12 @@ const ui = new Vue({
     },
     decrement() {
       store.commit('decrement');
+    },
+    incrementWithAction() {
+      store.dispatch('increment');
+    },
+    incrementAsync() {
+      store.dispatch('incrementAsync');
     }
   }
 });

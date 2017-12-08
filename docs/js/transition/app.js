@@ -129,6 +129,45 @@ var app = new _vue2.default({
   }
 });
 
+_vue2.default.component('Item', {
+  template: '<span>{{item.id}}</span>',
+  props: { item: Object }
+});
+
+var app2 = new _vue2.default({
+  el: '#app2',
+  data: function data() {
+    return {
+      maxId: 3,
+      list: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    };
+  },
+
+  methods: {
+    random: function random(max) {
+      return Math.floor(Math.random() * (max + 1));
+    },
+    add: function add() {
+      var id = ++this.maxId;
+      var index = this.random(this.list.length);
+      this.list.splice(index, 0, { id: id });
+    },
+    remove: function remove() {
+      var index = this.random(this.list.length - 1);
+      this.list.splice(index, 1);
+    },
+    shuffle: function shuffle() {
+      var shuffled = [];
+      while (this.list.length > 0) {
+        var index = this.random(this.list.length - 1);
+        shuffled.push(this.list[index]);
+        this.list.splice(index, 1);
+      }
+      this.list = shuffled;
+    }
+  }
+});
+
 //----------------------------------------------------------------------------
 
 /***/ })

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>component</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <h1>Vue Component</h1>
+    <div id="app">
+      <my-component message="A custom global component!"></my-component>
+    </div>
+    <div id="app2"></div>
+    <div id="app3">
+      <p>{{items}}</p>
+      <parent>
+        <child v-for="item in items">{{item}}</child>
+      </parent>
+    </div>
+    <script src="../js/component/app.js"></script>
+  </body>
+</html>

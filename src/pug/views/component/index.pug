@@ -1,0 +1,15 @@
+extends ../../include/_layout
+block var
+  - title = 'component'
+  - path = '../'
+block body
+  h1 Vue Component
+  #app
+    my-component(message="A custom global component!")
+
+  #app2
+
+  #app3
+    p {{items}}
+    parent
+      child(v-for="item in items") {{item}}

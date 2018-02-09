@@ -11,7 +11,7 @@
     "babel-register": "^6.24.1",
     "browser-sync": "^2.18.12",
     "css-loader": "^0.28.7",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.7.2",
     "npm-run-all": "^4.0.2",
     "pug": "^2.0.0-rc.2",
     "pug-cli": "^1.0.0-alpha6",

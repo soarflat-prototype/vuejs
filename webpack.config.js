@@ -6,7 +6,7 @@ module.exports = {
     'instance/app': './src/js/instance/app',
     'syntax/app': './src/js/syntax/app',
     'router/app': './src/js/router/app',
-    'component/app': './src/js/component/app',
+    'singleFileComponent/app': './src/js/singleFileComponent/app',
     'computed/app': './src/js/computed/app',
     'transition/app': './src/js/transition/app',
     'vuex/app': './src/js/vuex/app',

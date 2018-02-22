@@ -755,8 +755,8 @@ _vue2.default.use(_vueRouter2.default);
 //----------------------------------------------------------------------------
 
 // ルートを定義する
-var Foo = { template: '<div>foo</div>' };
-var Bar = { template: '<div>bar</div>' };
+var Foo = { template: '<transition name="slide"><div>foo</div></transition>' };
+var Bar = { template: '<transition name="slide"><div>bar</div></transition>' };
 
 // ルーターインスタンスを作成し、ルートのオプションを渡す
 var routes = [{
@@ -773,13 +773,28 @@ var router = new _vueRouter2.default({
 });
 
 var app = new _vue2.default({
-  router: router
+  router: router,
+  watch: {
+    '$route': function $route(to, from) {
+      console.log('changed route');
+      console.log('to', to);
+      console.log('from', from);
+    }
+  }
 }).$mount('#app');
 
 //----------------------------------------------------------------------------
 
 var User = {
-  template: '<div>{{ $route.params.id }}</div>'
+  template: '<div>{{ $route.params.id }}</div>',
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+    var toDepth = to.path.split('/').length;
+    var fromDepth = from.path.split('/').length;
+
+    console.log('toDepth', toDepth);
+    console.log('fromDepth', fromDepth);
+    next();
+  }
 };
 
 var userRouter = new _vueRouter2.default({
@@ -808,9 +823,6 @@ var appRouter = new _vueRouter2.default({
     components: {
       b: _app2.default
     }
-  }, {
-    path: '*',
-    redirect: '/app/doraemon'
   }]
 });
 
@@ -3443,6 +3455,7 @@ exports.push([module.i, "\n.example[data-v-506da201] {\n  color: red;\n}\n", ""]
 
   methods: {
     fetchData() {
+      console.log(this.$route);
       console.log('fetchData', this.$route.params.id);
     }
   }

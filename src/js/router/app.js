@@ -8,8 +8,8 @@ Vue.use(Router);
 //----------------------------------------------------------------------------
 
 // ルートを定義する
-const Foo = { template: '<div>foo</div>' };
-const Bar = { template: '<div>bar</div>' };
+const Foo = { template: '<transition name="slide"><div>foo</div></transition>' };
+const Bar = { template: '<transition name="slide"><div>bar</div></transition>' };
 
 // ルーターインスタンスを作成し、ルートのオプションを渡す
 const routes = [{
@@ -26,13 +26,28 @@ const router = new Router({
 });
 
 const app = new Vue({
-  router
+  router,
+  watch: {
+    '$route' (to, from) {
+      console.log('changed route');
+      console.log('to', to);
+      console.log('from', from);
+    }
+  }
 }).$mount('#app');
 
 //----------------------------------------------------------------------------
 
 const User = {
-  template: '<div>{{ $route.params.id }}</div>'
+  template: '<div>{{ $route.params.id }}</div>',
+  beforeRouteUpdate (to, from, next) {
+    const toDepth = to.path.split('/').length;
+    const fromDepth = from.path.split('/').length;
+
+    console.log('toDepth', toDepth);
+    console.log('fromDepth', fromDepth);
+    next()
+  }
 };
 
 const userRouter = new Router({
@@ -61,9 +76,6 @@ const appRouter = new Router({
     components: {
       b: appComponent,
     },
-  }, {
-    path: '*',
-    redirect: '/app/doraemon',
   }],
 });
 

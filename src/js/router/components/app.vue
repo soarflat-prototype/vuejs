@@ -10,6 +10,7 @@
 
     methods: {
       fetchData() {
+        console.log(this.$route);
         console.log('fetchData', this.$route.params.id);
       }
     }

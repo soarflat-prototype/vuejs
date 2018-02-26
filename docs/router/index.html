@@ -25,6 +25,12 @@
         opacity: 0;
       }
       
+      section {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+      }
+      
     </style>
     <div id="app">
       <h1>Vue Router Sample</h1>
@@ -55,6 +61,15 @@
       <!--ルートとマッチしたコンポーネントがここに表示される-->
       <router-view class="a" name="a"></router-view>
       <router-view class="b" name="b"></router-view>
+    </div>
+    <div id="app4">
+      <h1>切り替えたコンポーネントをアニメーション</h1>
+      <p>
+        <router-link to="/section1">Go to section1</router-link>
+        <router-link to="/section2">Go to section2</router-link>
+      </p>
+      <!--ルートとマッチしたコンポーネントがここに表示される-->
+      <router-view></router-view>
     </div>
     <script src="../js/router/app.js"></script>
   </body>
